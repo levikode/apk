@@ -20,7 +20,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary" style="background: transparent; border: 2px solid rgba(225, 225, 225, .2); backdrop-filter: blur(5px); color: #fff; border-radius: 20px; padding: 20px 30px;">
     <div class="card-header text-center">
-    <h1 class="h1"><b style="color: #007bff;">Aplikasi <b style="color: #007bff;">POS</b></h1>
+    <h1 class="h1"><b style="color: #007bff;">Aplikasi <b style="color: #007bff;">SIMPEG</b></h1>
     </div>
     <div class="card-body">
     <p class="login-box-msg" style="color: #007bff ;">Please Login</p>
