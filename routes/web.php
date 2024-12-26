@@ -5,9 +5,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\GolonganController;
-use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\AgamaController;
-use App\Http\Controllers\JeniskelaminController;
+use App\Http\Controllers\UnitkerjaController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\DashboardController;
 
@@ -31,9 +31,9 @@ use App\Http\Controllers\DashboardController;
 //     })->middleware('auth');
 Route::resource('pegawai',PegawaiController::class);
 Route::resource('golongan', GolonganController::class)->middleware('auth');
-Route::resource('jabatan', JabatanController::class)->middleware('auth');
+Route::resource('keluarga', KeluargaController::class)->middleware('auth');
 Route::resource('agama', AgamaController::class)->middleware('auth');
-Route::resource('jeniskelamin', JeniskelaminController::class)->middleware('auth');
+Route::resource('unitkerja', UnitkerjaController::class)->middleware('auth');
 
 Route::resource('user',UserController::class)->except('destroy','create','show','update','edit');
 Route::get('login',[LoginController::class,'loginView'])->name('login');

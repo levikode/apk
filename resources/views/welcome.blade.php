@@ -119,7 +119,7 @@
     </div>
 
     <!-- Table Data Terbaru -->
-    <div class="row">
+    <!-- resources/views/login.blade.php<div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header">Data Pegawai Terbaru</div>
@@ -147,6 +147,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endsection

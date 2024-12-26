@@ -8,24 +8,24 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1',' Jabatan')
-@section('judulh3','Jabatans')
+@section('judulh1',' Unitkerja')
+@section('judulh3','Unitkerjas')
 @section('konten')
 
 <div class="col-md-4">
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Input Jabatan</h3>
+            <h3 class="card-title">Input Unit Kerja</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('jabatan.store') }}" method="POST">
+        <form action="{{ route('unitkerja.store') }}" method="POST">
             @csrf
 
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="nama">Nama Jabatan</label>
+                    <label for="nama">Nama Unit Kerja</label>
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="">
                 </div>
             </div>
@@ -42,7 +42,7 @@
 <div class="col-md-8">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data Jabatan</h3>
+            <h3 class="card-title">Data Unit Kerja</h3>
         </div>
         <!-- /.card-header -->
 
@@ -63,10 +63,10 @@
                         <td>{{ $dt->nama }}</td>
                         <td>
                             <div class="btn-group">
-                                <a type="button" class="btn btn-warning" href="{{ route('jabatan.edit',$dt->id) }}">
+                                <a type="button" class="btn btn-warning" href="{{ route('unitkerja.edit',$dt->id) }}">
                                     <i class=" fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('jabatan.destroy',$dt->id)}}" method="POST">
+                                <form action="{{ route('unitkerja.destroy',$dt->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">

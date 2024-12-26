@@ -10,7 +10,7 @@ use Illuminate\Database\Relations\HasMany;
 class Pegawai extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','nama','nip','nik','tmt','usia','masakerja','jabatan_id','golongan_id','agama_id','jeniskelamin_id','ttl','alamat'];
+    protected $fillable=['user_id','nama','nip','jeniskelamin','tempatlahir','usia','masakerja','keluarga_id','golongan_id','agama_id','unitkerja_id','tanggallahir','alamat','foto'];
 
     public function user():BelongsTo
     {
@@ -20,17 +20,17 @@ class Pegawai extends Model
     {
         return $this->belongsTo(Golongan::class);
     }
-    public function jabatan():BelongsTo
+    public function keluarga():BelongsTo
     {
-        return $this->belongsTo(Jabatan::class);
+        return $this->belongsTo(Keluarga::class);
     }
     public function agama():BelongsTo
     {
         return $this->belongsTo(Agama::class);
     }
-    public function jeniskelamin():BelongsTo
+    public function unitkerja():BelongsTo
     {
-        return $this->belongsTo(Jeniskelamin::class);
+        return $this->belongsTo(Unitkerja::class);
     }
     
 }

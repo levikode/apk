@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         Schema::table('pegawais',function(Blueprint $table){
-            $table->foreign('jabatan_id')->references('id')->on('jabatans')
+            $table->foreign('keluarga_id')->references('id')->on('keluargas')
             ->onUpdate('cascade')->onDelete('cascade');            
         });
 
@@ -34,7 +34,7 @@ return new class extends Migration
         });
 
         Schema::table('pegawais',function(Blueprint $table){
-            $table->foreign('jeniskelamin_id')->references('id')->on('jeniskelamins')
+            $table->foreign('unitkerja_id')->references('id')->on('unitkerjas')
             ->onUpdate('cascade')->onDelete('cascade');            
         });
        
@@ -46,10 +46,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('pegawais', function(Blueprint $table) {
-            $table->dropForeign('pegawai_jabatan_id_foreign');
+            $table->dropForeign('pegawai_keluarga_id_foreign');
         });
         Schema::table('pegawais', function(Blueprint $table) {
-            $table->dropIndex('pegawai_jabatan_id_foreign');
+            $table->dropIndex('pegawai_keluarga_id_foreign');
         });
 
         
@@ -79,10 +79,10 @@ return new class extends Migration
         
 
         Schema::table('pegawais', function(Blueprint $table) {
-            $table->dropForeign('pegawai_jeniskelamin_id_foreign');
+            $table->dropForeign('pegawai_unitkerja_id_foreign');
         });
         Schema::table('pegawais', function(Blueprint $table) {
-            $table->dropIndex('pegawai_jeniskelamin_id_foreign');
+            $table->dropIndex('pegawai_unitkerja_id_foreign');
         });
 
 

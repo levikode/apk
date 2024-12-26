@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1',' Golongan')
+@section('judulh1','')
 @section('judulh3','Golongans')
 @section('konten')
 
@@ -16,7 +16,7 @@
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Input Golongan</h3>
+            <h3 class="card-title">Input Golongan Darah</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -25,7 +25,7 @@
 
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="nama">Nama Golongan</label>
+                    <label for="nama">Nama Golongan Darah</label>
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="">
                 </div>
             </div>
@@ -42,7 +42,7 @@
 <div class="col-md-8">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data Golongan</h3>
+            <h3 class="card-title">Data Golongan Darah</h3>
         </div>
         <!-- /.card-header -->
 

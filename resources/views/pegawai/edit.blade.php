@@ -18,7 +18,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('pegawai.update',$pegawai->id) }}" method="POST">
+        <form action="{{ route('pegawai.update',$pegawai->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class=" card-body">
@@ -30,12 +30,19 @@
                 <div class="form-group">
                     <label for="nip">nip</label>
                     <input type="number" class="form-control" id="nip" name="nip" value="{{$pegawai->nip}}">
-                <div class="form-group">
-                    <label for="nik">nik</label>
-                    <input type="number" class="form-control" id="nik" name="nik" value="{{$pegawai->nik}}">
-                <div class="form-group">
-                    <label for="tmt">tmt</label>
-                    <input type="date" class="form-control" id="tmt" name="tmt" value="{{$pegawai->tmt}}">
+                    <div class="form-group">
+                            <label for="jeniskelamin">Jenis Kelamin</label>
+                            <select class="form-control" id="jeniskelamin" name="jeniskelamin">
+                                <option value="Laki-laki" {{ old('jeniskelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="Perempuan" {{ old('jeniskelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            </select>
+                        </div>
+                    <div class="form-group">
+                    <label for="tempatlahir">tempat lahir</label>
+                    <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" value="{{$pegawai->tempatlahir}}">
+                    <div class="form-group">
+                    <label for="tanggallahir">tanggal lahir</label>
+                    <input type="text" class="form-control" id="tanggallahir" name="tanggallahir" placeholder="" value="{{$pegawai->tanggallahir}}">
                 </div> 
                 <div class="form-group">
                     <label for="usia">usia</label>
@@ -54,9 +61,9 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Jabatan</label>
-                    <select class="form-control" name="jabatan_id">
-                        @foreach($jabatan as $dt )
+                    <label>keluarga</label>
+                    <select class="form-control" name="keluarga_id">
+                        @foreach($keluarga as $dt )
                         <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
                         @endforeach
                     </select>
@@ -78,22 +85,22 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Jeniskelamin</label>
-                    <select class="form-control" name="jeniskelamin_id">
-                        @foreach($jeniskelamin as $dt )
+                    <label>unitkerja</label>
+                    <select class="form-control" name="unitkerja_id">
+                        @foreach($unitkerja as $dt )
                         <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="ttl">TTL</label>
-                    <input type="text" class="form-control" id="ttl" name="ttl" placeholder="" value="{{$pegawai->ttl}}">
-                </div> 
+              
                 <div class="form-group">
                     <label for="alamat">Alamat</label>
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="" value="{{$pegawai->alamat}}">
                 </div> 
-              
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" class="form-control" id="foto" name="foto">
+                </div>
                 
               
             </div>

@@ -8,24 +8,24 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1',' Jeniskelamin')
-@section('judulh3','Jeniskelamins')
+@section('judulh1','')
+@section('judulh3','keluargas')
 @section('konten')
 
 <div class="col-md-4">
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Input Jeniskelamin</h3>
+            <h3 class="card-title">Input Status Keluarga</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('jeniskelamin.store') }}" method="POST">
+        <form action="{{ route('keluarga.store') }}" method="POST">
             @csrf
 
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="nama">Nama Jeniskelamin</label>
+                    <label for="nama">Status Keluarga</label>
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="">
                 </div>
             </div>
@@ -42,7 +42,7 @@
 <div class="col-md-8">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data Jeniskelamin</h3>
+            <h3 class="card-title">Data Status Keluarga</h3>
         </div>
         <!-- /.card-header -->
 
@@ -51,7 +51,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -63,10 +63,10 @@
                         <td>{{ $dt->nama }}</td>
                         <td>
                             <div class="btn-group">
-                                <a type="button" class="btn btn-warning" href="{{ route('jeniskelamin.edit',$dt->id) }}">
+                                <a type="button" class="btn btn-warning" href="{{ route('keluarga.edit',$dt->id) }}">
                                     <i class=" fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('jeniskelamin.destroy',$dt->id)}}" method="POST">
+                                <form action="{{ route('keluarga.destroy',$dt->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">

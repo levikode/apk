@@ -14,21 +14,21 @@ return new class extends Migration
         Schema::create('pegawais', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('jabatan_id')->unsigned();
+            $table->bigInteger('keluarga_id')->unsigned();
             $table->bigInteger('golongan_id')->unsigned();
             $table->bigInteger('agama_id')->unsigned();
-            $table->bigInteger('jeniskelamin_id')->unsigned();
+            $table->bigInteger('unitkerja_id')->unsigned();
             $table->string('nama');
+            $table->string('jeniskelamin');
             $table->integer('nip');
-            $table->integer('nik');
-            $table->date('tmt');
             $table->integer('usia');
             $table->integer('masakerja');
             $table->string('alamat');
-            $table->string('ttl');
-            
+            $table->string('tempatlahir');
+            $table->date('tanggallahir');
+            $table->string('foto')->nullable(); // Kolom untuk menyimpan path foto
             $table->timestamps();           
-        });                
+        });
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('judulh1','Admin - Jeniskelamin')
+@section('judulh1','Admin - Unitkerja')
 
 @section('konten')
 <div class="col-md-6">
@@ -16,18 +16,18 @@
 
     <div class="card card-warning">
         <div class="card-header">
-            <h3 class="card-title">Ubah Data Jeniskelamin</h3>
+            <h3 class="card-title">Ubah Data Unit Kerja</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('jeniskelamin.update',$jeniskelamin->id) }}" method="POST">
+        <form action="{{ route('unitkerja.update',$unitkerja->id) }}" method="POST">
             @csrf
             @method('PUT')
             
             <div class=" card-body">
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="{{$jeniskelamin->nama}}">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="" value="{{$unitkerja->nama}}">
                 </div>                  
             </div>
 
