@@ -38,10 +38,10 @@
                             </select>
                         </div>
                     <div class="form-group">
-                    <label for="tempatlahir">tempat lahir</label>
+                    <label for="tempatlahir">Tempat Lahir</label>
                     <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" value="{{$pegawai->tempatlahir}}">
                     <div class="form-group">
-                    <label for="tanggallahir">tanggal lahir</label>
+                    <label for="tanggallahir">Tanggal Lahir</label>
                     <input type="text" class="form-control" id="tanggallahir" name="tanggallahir" placeholder="" value="{{$pegawai->tanggallahir}}">
                 </div> 
                 <div class="form-group">
