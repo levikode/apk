@@ -14,12 +14,17 @@ return new class extends Migration
 
         
         Schema::table('pegawais',function(Blueprint $table){
-            $table->foreign('user_id')->references('id')->on('Users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');            
         });
 
         Schema::table('pegawais',function(Blueprint $table){
             $table->foreign('keluarga_id')->references('id')->on('keluargas')
+            ->onUpdate('cascade')->onDelete('cascade');            
+        });
+
+        Schema::table('pegawais',function(Blueprint $table){
+            $table->foreign('jabatan_id')->references('id')->on('jabatans')
             ->onUpdate('cascade')->onDelete('cascade');            
         });
 
@@ -50,6 +55,13 @@ return new class extends Migration
         });
         Schema::table('pegawais', function(Blueprint $table) {
             $table->dropIndex('pegawai_keluarga_id_foreign');
+        });
+
+        Schema::table('pegawais', function(Blueprint $table) {
+            $table->dropForeign('pegawai_jabatan_id_foreign');
+        });
+        Schema::table('pegawais', function(Blueprint $table) {
+            $table->dropIndex('pegawai_jabatan_id_foreign');
         });
 
         

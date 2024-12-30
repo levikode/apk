@@ -6,16 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\User; 
 use App\Models\Keluarga; 
+use App\Models\Jabatan; 
 use App\Models\Golongan;
 use App\Models\Agama; 
 use App\Models\Unitkerja;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\PDF;
 
 class PegawaiController extends Controller
 {
-    // Fungsi untuk menampilkan data pegawai
+
+public function cetakPDF()
+{
+    $data = Pegawai::all(); // Ambil data pegawai
+    $pdf = PDF::loadView('pegawai.laporan_pdf', compact('data'));
+    return $pdf->download('laporan_pegawai.pdf'); // Unduh file PDF
+}
+// Fungsi untuk menampilkan data pegawai
     public function index()
     {
         $pegawai = Pegawai::all();
@@ -34,7 +43,8 @@ class PegawaiController extends Controller
             "keluarga" => Keluarga::all(),
             "golongan" => Golongan::all(),
             "agama" => Agama::all(),
-            "unitkerja" => Unitkerja::all()
+            "unitkerja" => Unitkerja::all(),
+            "jabatan" => Jabatan::all()
         ]);
     }
 
@@ -53,6 +63,7 @@ class PegawaiController extends Controller
             "keluarga_id" => "required", 
             "agama_id" => "required", 
             "unitkerja_id" => "required",
+            "jabatan_id" => "required",
             "tanggallahir" => "required",
             "alamat" => "required",
             "foto" => "nullable|image|mimes:jpeg,png,jpg|max:2048",
@@ -78,7 +89,8 @@ class PegawaiController extends Controller
             "keluarga" => Keluarga::all(),
             "golongan" => Golongan::all(),
             "agama" => Agama::all(),
-            "unitkerja" => Unitkerja::all()
+            "unitkerja" => Unitkerja::all(),
+            "jabatan" => Jabatan::all()
         ]);
     }
 
@@ -97,6 +109,7 @@ class PegawaiController extends Controller
             "keluarga_id" => "required", 
             "agama_id" => "required", 
             "unitkerja_id" => "required",
+            "jabatan_id" => "required",
             "tanggallahir" => "required",
             "alamat" => "required",
             "foto" => "nullable|image|mimes:jpeg,png,jpg|max:2048",

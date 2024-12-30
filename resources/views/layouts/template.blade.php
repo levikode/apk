@@ -58,6 +58,7 @@
                         <a class="collapse-item" href="{{ route('keluarga.index') }}">Keluarga</a>
                         <a class="collapse-item" href="{{ route('agama.index') }}">Agama</a>
                         <a class="collapse-item" href="{{ route('unitkerja.index') }}">Unit Kerja</a>
+                        <a class="collapse-item" href="{{ route('jabatan.index') }}">Jabatan</a>
                     </div>
                 </div>
             </li>
@@ -79,12 +80,7 @@
             </li>
 
             <!-- Nav Item - Laporan -->
-            <li class="nav-item {{ ($title === 'Laporan') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('laporan.index') }}">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>Laporan</span>
-                </a>
-            </li>
+          
             <div class="text-center d-none d-md-inline">
                 <br>
                 <button class="rounded-sn border-0" id="sidebarToggle"></button>

@@ -56,6 +56,7 @@
                             <label for="masakerja">Masa Kerja</label>
                             <input type="number" class="form-control" id="masakerja" name="masakerja" placeholder="Masukkan Masa Kerja">
                         </div>
+                    
                     </div>
                     <!-- Kolom Kanan -->
                     <div class="col-md-6">
@@ -100,9 +101,18 @@
                             </select>
                         </div>
                         <div class="form-group">
+                    <label>Jabatan</label>
+                    <select class="form-control" name="jabatan_id">
+                        @foreach($jabatan as $dt )
+                        <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                        <div class="form-group">
                             <label for="alamat">Alamat</label>
                             <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat"></textarea>
                         </div>
+                     
                         <div class="form-group">
                             <label for="foto">Foto</label>
                             <input type="file" class="form-control-file" id="foto" name="foto">

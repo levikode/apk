@@ -43,6 +43,10 @@
                                 <td>{{ $data[0]->nip }}</td>
                             </tr>
                             <tr>
+                                <th>jabatan</th>
+                                <td>{{ $data[0]->jabatan }}</td>
+                            </tr>
+                            <tr>
                                 <th>Jenis Kelamin</th>
                                 <td>{{ $data[0]->jeniskelamin }}</td>
                             </tr>

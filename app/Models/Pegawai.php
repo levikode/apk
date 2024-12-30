@@ -10,7 +10,7 @@ use Illuminate\Database\Relations\HasMany;
 class Pegawai extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','nama','nip','jeniskelamin','tempatlahir','usia','masakerja','keluarga_id','golongan_id','agama_id','unitkerja_id','tanggallahir','alamat','foto'];
+    protected $fillable=['user_id','nama','nip','jeniskelamin','tempatlahir','usia','masakerja','keluarga_id','golongan_id','agama_id','unitkerja_id','jabatan_id','tanggallahir','alamat','foto'];
 
     public function user():BelongsTo
     {
@@ -31,6 +31,10 @@ class Pegawai extends Model
     public function unitkerja():BelongsTo
     {
         return $this->belongsTo(Unitkerja::class);
+    }
+    public function jabatan():BelongsTo
+    {
+        return $this->belongsTo(Jabatan::class);
     }
     
 }

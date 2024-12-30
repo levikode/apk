@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('keluarga_id')->unsigned();
+            $table->bigInteger('jabatan_id')->unsigned();
             $table->bigInteger('golongan_id')->unsigned();
             $table->bigInteger('agama_id')->unsigned();
             $table->bigInteger('unitkerja_id')->unsigned();

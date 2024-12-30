@@ -59,12 +59,20 @@ toastr.error("{{ $message}}");
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
             <h4 class="m-0 font-weight-bold text-primary">Data pegawai</h4>
+            <a href="{{ route('pegawai.cetakPDF') }}" class="btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-file-pdf"></i>
+    </span>
+    <span class="text">Cetak PDF</span>
+</a>
             <a href="{{ route('pegawai.create') }}" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah pegawai</span>
             </a>
+           
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -75,6 +83,7 @@ toastr.error("{{ $message}}");
                         <th>Foto</th>
                         <th>Nama</th>
                         <th>NIP</th>
+                        <th>Jabatan</th>
                         <th>Jenis Kelamin</th>
                         <th>Tempat Lahir</th>
                         <th>Tanggal Lahir</th>
@@ -103,21 +112,20 @@ toastr.error("{{ $message}}");
                              @endif
                         </td>
                         <td>{{ $dt->nama }}</td>
-                        <td>{{ $dt->nip }}</td>
-                        <td>{{ $dt->jeniskelamin}}</td>
-                        <td>{{ $dt->tempatlahir}}</td>
-                        <td>{{ $dt->tanggallahir }}</td>
-                        <td>{{ $dt->usia }}</td>
-                        <td>{{ $dt->masakerja }}</td>
-                        <td>{{ $dt->keluarga->nama }}</td>
-                        <td>{{ $dt->golongan->nama }}</td>
-                        <td>{{ $dt->agama->nama }}</td>
-                        <td>{{ $dt->unitkerja->nama }}</td>
-                        <td>{{ $dt->alamat }}</td> 
-                        <td>{{ $dt->user->name }}</td>
-                        
-
-
+        <td>{{ $dt->nip }}</td>
+        <td>{{ $dt->jabatan->nama}}</td>
+     
+        <td>{{ $dt->jeniskelamin }}</td>
+        <td>{{ $dt->tempatlahir }}</td>
+        <td>{{ $dt->tanggallahir }}</td>
+        <td>{{ $dt->usia }}</td>
+        <td>{{ $dt->masakerja }}</td>
+        <td>{{ $dt->keluarga->nama}}</td>
+        <td>{{ $dt->golongan->nama }}</td>
+        <td>{{ $dt->agama->nama}}</td>
+        <td>{{ $dt->unitkerja->nama }}</td>
+        <td>{{ $dt->alamat }}</td>
+        <td>{{ $dt->user->name}}</td>
                           
                             <td>
                                 <div class="btn-group" role="group">
