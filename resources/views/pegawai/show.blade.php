@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <th>jabatan</th>
-                                <td>{{ $data[0]->jabatan }}</td>
+                                <td>{{ $data[0]->jabatan->nama }}</td>
                             </tr>
                             <tr>
                                 <th>Jenis Kelamin</th>
@@ -68,23 +68,23 @@
                             </tr>
                             <tr>
                                 <th>User</th>
-                                <td>{{ $data[0]->name }}</td>
+                                <td>{{ $data[0]->user->name }}</td>
                             </tr>
                             <tr>
                                 <th>Keluarga</th>
-                                <td>{{ $data[0]->nama }}</td>
+                                <td>{{ $data[0]->keluarga->nama }}</td>
                             </tr>
                             <tr>
                                 <th>Golongan</th>
-                                <td>{{ $data[0]->nama }}</td>
+                                <td>{{ $data[0]->golongan->nama }}</td>
                             </tr>
                             <tr>
                                 <th>Agama</th>
-                                <td>{{ $data[0]->nama }}</td>
+                                <td>{{ $data[0]->agama->nama }}</td>
                             </tr>
                             <tr>
                                 <th>Unit Kerja</th>
-                                <td>{{ $data[0]->nama }}</td>
+                                <td>{{ $data[0]->unitkerja->nama }}</td>
                             </tr>
                             <tr>
                                 <th>Alamat</th>
