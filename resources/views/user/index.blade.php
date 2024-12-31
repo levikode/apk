@@ -25,7 +25,7 @@
             <div class=" card-body">
                 <div class="form-group">
                     <label for="name">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder=" Nama Lengkap" required  value="{{old('name')}}">
+                    <input type="text" class="form-control" id="name" name="name" placeholder=" Nama Lengkap" required value="{{old('name')}}">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -38,8 +38,36 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="input-group my-input-group"> <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="fa fa-eye" onclick="togglePassword()"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <style>
+                        .my-input-group .input-group-text {
+                            /* Sesuaikan gaya sesuai kebutuhan */
+                            border-left: none;
+                            background-color: #f8f9fa;
+                        }
+
+                        .fa-eye {
+                            cursor: pointer;
+                        }
+                    </style>
+                    <script>
+                        function togglePassword() {
+                            var passwordField = document.getElementById("password");
+                            if (passwordField.type === "password") {
+                                passwordField.type = "text";
+                            } else {
+                                passwordField.type = "password";
+                            }
+                        }
+                    </script>
                 </div>
+
             </div>
             <!-- /.card-body -->
 
@@ -64,7 +92,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama </th>
-                        <th>Email</th>                                   
+                        <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,19 +135,19 @@
 
 @section('tambahScript')
 <script>
-$(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": true,
-        "autoWidth": false,
-        "responsive": true,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-});
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
+            "responsive": true,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
 
-@if($message = Session::get('success'))
-toastr.success("{{ $message}}");
-@elseif($message = Session::get('updated'))
-toastr.warning("{{ $message}}");
-@endif
+    @if($message = Session::get('success'))
+    toastr.success("{{ $message}}");
+    @elseif($message = Session::get('updated'))
+    toastr.warning("{{ $message}}");
+    @endif
 </script>
 @endsection

@@ -1,4 +1,3 @@
-
 @section('tambahanJS')
 <!-- DataTables  & Plugins -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -20,22 +19,22 @@
 
 @section('tambahScript')
 <script>
-$(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": true,
-        "autoWidth": false,
-        "responsive": true,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-});
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
+            "responsive": true,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
 
-@if($message = Session::get('success'))
-toastr.success("{{ $message}}");
-@elseif($message = Session::get('updated'))
-toastr.warning("{{ $message}}");
-@elseif($message = Session::get('deleted'))
-toastr.error("{{ $message}}");
-@endif
+    @if($message = Session::get('success'))
+    toastr.success("{{ $message}}");
+    @elseif($message = Session::get('updated'))
+    toastr.warning("{{ $message}}");
+    @elseif($message = Session::get('deleted'))
+    toastr.error("{{ $message}}");
+    @endif
 </script>
 @endsection
 
@@ -58,20 +57,17 @@ toastr.error("{{ $message}}");
 <div class="col-md-12">
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between">
-            <h4 class="m-0 font-weight-bold text-primary">Data pegawai</h4>
-            <a href="{{ route('pegawai.cetakPDF') }}" class="btn btn-primary btn-icon-split">
-    <span class="icon text-white-50">
-        <i class="fas fa-file-pdf"></i>
-    </span>
-    <span class="text">Cetak PDF</span>
-</a>
+            <a href="{{ route('pegawai.pdf') }}" class="btn btn-primary">Download PDF</a>
+            <h4 class="m-0 font-weight-bold text-secondary">Data pegawai</h4>
+
             <a href="{{ route('pegawai.create') }}" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="text">Tambah pegawai</span>
+
             </a>
-           
+
 
         </div>
         <div class="card-body">
@@ -79,54 +75,53 @@ toastr.error("{{ $message}}");
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                        <th>No</th>
-                        <th>Foto</th>
-                        <th>Nama</th>
-                        <th>NIP</th>
-                        <th>Jabatan</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Tempat Lahir</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Usia</th>
-                        <th>Masa Kerja</th>
-                        <th>Status Keluarga</th>
-                        <th>Golongan Darah</th>
-                        <th>Agama</th>
-                        <th>Unit Kerja</th>
-                        <th>Alamat</th>
-                        <th>Petugas</th>
+                            <th>No</th>
+                            <th>Foto</th>
+                            <th>Nama</th>
+                            <th>NIP</th>
+                            <th>Jabatan</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Usia</th>
+                            <th>Masa Kerja</th>
+                            <th>Status Keluarga</th>
+                            <th>Golongan Darah</th>
+                            <th>Agama</th>
+                            <th>Unit Kerja</th>
+                            <th>Alamat</th>
+                            <th>Petugas</th>
 
-                      
-                        <th>Aksi</th>
+
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data as $dt)
                         <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>
-                             @if ($dt->foto)
-                            <img src="{{ asset('storage/' . $dt->foto) }}" alt="Foto {{ $dt->nama }}" width="100">
-                             @else
-                             Tidak ada foto
-                             @endif
-                        </td>
-                        <td>{{ $dt->nama }}</td>
-        <td>{{ $dt->nip }}</td>
-        <td>{{ $dt->jabatan->nama}}</td>
-     
-        <td>{{ $dt->jeniskelamin }}</td>
-        <td>{{ $dt->tempatlahir }}</td>
-        <td>{{ $dt->tanggallahir }}</td>
-        <td>{{ $dt->usia }}</td>
-        <td>{{ $dt->masakerja }}</td>
-        <td>{{ $dt->keluarga->nama}}</td>
-        <td>{{ $dt->golongan->nama }}</td>
-        <td>{{ $dt->agama->nama}}</td>
-        <td>{{ $dt->unitkerja->nama }}</td>
-        <td>{{ $dt->alamat }}</td>
-        <td>{{ $dt->user->name}}</td>
-                          
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                @if ($dt->foto)
+                                <img src="{{ asset('storage/' . $dt->foto) }}" alt="Foto {{ $dt->nama }}" width="100">
+                                @else
+                                Tidak ada foto
+                                @endif
+                            </td>
+                            <td>{{ $dt->nama }}</td>
+                            <td>{{ $dt->nip }}</td>
+                            <td>{{ $dt->jabatan->nama}}</td>
+                            <td>{{ $dt->jeniskelamin }}</td>
+                            <td>{{ $dt->tempatlahir }}</td>
+                            <td>{{ $dt->tanggallahir }}</td>
+                            <td>{{ $dt->usia }}</td>
+                            <td>{{ $dt->masakerja }}</td>
+                            <td>{{ $dt->keluarga->nama}}</td>
+                            <td>{{ $dt->golongan->nama }}</td>
+                            <td>{{ $dt->agama->nama}}</td>
+                            <td>{{ $dt->unitkerja->nama }}</td>
+                            <td>{{ $dt->alamat }}</td>
+                            <td>{{ $dt->user->name}}</td>
+
                             <td>
                                 <div class="btn-group" role="group">
                                     <form action="{{ route('pegawai.destroy', $dt->id) }}" method="POST">
@@ -144,6 +139,7 @@ toastr.error("{{ $message}}");
                                     </a>
                                 </div>
                             </td>
+
                         </tr>
                         @endforeach
                     </tbody>
@@ -174,11 +170,11 @@ toastr.error("{{ $message}}");
     });
 
     @if($message = Session::get('success'))
-        toastr.success("{{ $message }}");
+    toastr.success("{{ $message }}");
     @elseif($message = Session::get('updated'))
-        toastr.warning("{{ $message }}");
+    toastr.warning("{{ $message }}");
     @elseif($message = Session::get('deleted'))
-        toastr.error("{{ $message }}");
+    toastr.error("{{ $message }}");
     @endif
 </script>
 @endsection

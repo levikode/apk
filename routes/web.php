@@ -29,7 +29,9 @@ use App\Http\Controllers\DashboardController;
 //         "title"=>"Dashboard"
 //     ]);
 //     })->middleware('auth');
-Route::resource('pegawai',PegawaiController::class);
+Route::get('/pegawai/pdf', [PegawaiController::class, 'exportPdf'])->name('pegawai.pdf');
+
+Route::resource('pegawai',PegawaiController::class)->middleware('auth');
 Route::resource('golongan', GolonganController::class)->middleware('auth');
 Route::resource('keluarga', KeluargaController::class)->middleware('auth');
 Route::resource('jabatan', JabatanController::class)->middleware('auth');
@@ -41,7 +43,6 @@ Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'authenticate']);
 Route::post('logout',[LoginController::class,'logout'])->name('auth.logout')->middleware('auth');
 
-Route::get('/pegawai/cetak-pdf', [PegawaiController::class, 'cetakPDF'])->name('pegawai.cetakPDF');
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/chart-data', [App\Http\Controllers\DashboardController::class, 'getChartData']);

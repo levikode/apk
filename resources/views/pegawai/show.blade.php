@@ -19,6 +19,7 @@
             <a href="{{ route('pegawai.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Kembali
             </a>
+            
         </div>
         <div class="card-body">
             <div class="row">

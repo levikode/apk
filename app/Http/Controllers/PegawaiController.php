@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\User; 
 use App\Models\Keluarga; 
@@ -13,16 +12,17 @@ use App\Models\Unitkerja;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Barryvdh\DomPDF\PDF;
-
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 class PegawaiController extends Controller
 {
-
-public function cetakPDF()
+   
+public function exportPdf()
 {
-    $data = Pegawai::all(); // Ambil data pegawai
-    $pdf = PDF::loadView('pegawai.laporan_pdf', compact('data'));
-    return $pdf->download('laporan_pegawai.pdf'); // Unduh file PDF
+    $dataPegawai = Pegawai::all(); // Ganti dengan query data Anda
+    $pdf = Pdf::loadView('pegawai.pdf', compact('dataPegawai'));
+    $pdf->setPaper('A4', 'landscape');
+    return $pdf->download('data-pegawai.pdf'); // Mengembalikan file untuk di-download
 }
 // Fungsi untuk menampilkan data pegawai
     public function index()
@@ -32,6 +32,7 @@ public function cetakPDF()
             "title" => "Pegawai",
             "data" => $pegawai
         ]);
+        
     }
 
     // Fungsi untuk menampilkan form tambah data pegawai
