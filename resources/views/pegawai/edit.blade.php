@@ -43,13 +43,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="tempatlahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" value="{{ old('tempatlahir', $pegawai->tempatlahir) }}">
+                            <label for="ttl">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="ttl" name="ttl" placeholder="Masukkan Tempat Lahir" value="{{ old('ttl', $pegawai->ttl) }}">
                         </div>
-                        <div class="form-group">
-                            <label for="tanggallahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{ old('tanggallahir', $pegawai->tanggallahir) }}">
-                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir', $pegawai->tanggal_lahir) }}">
+                        </div> -->
                         <div class="form-group">
                             <label for="usia">Usia</label>
                             <input type="number" class="form-control" id="usia" name="usia" value="{{ old('usia', $pegawai->usia) }}">
@@ -67,11 +68,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Keluarga</label>
-                            <select class="form-control" name="keluarga_id">
-                                @foreach($keluarga as $dt)
-                                <option value="{{ $dt->id }}" {{ $pegawai->keluarga_id == $dt->id ? 'selected' : '' }}>{{ $dt->nama }}</option>
-                                @endforeach
+                            <label for="statuskeluarga">statuskeluarga</label>
+                            <select class="form-control" id="statuskeluarga" name="statuskeluarga">
+                                <option value="" disabled selected>Pilih statuskeluarga</option>
+                                <option value="menikah" {{ old('statuskeluarga', $pegawai->statuskeluarga) == 'menikah' ? 'selected' : '' }}>menikah</option>
+                                <option value="belum menikah" {{ old('statuskeluarga', $pegawai->statuskeluarga) == 'belum menikah' ? 'selected' : '' }}>belum menikah</option>
+                                <option value="cerai" {{ old('statuskeluarga', $pegawai->statuskeluarga) == 'cerai' ? 'selected' : '' }}>cerai</option>
+                            
                             </select>
                         </div>
                     </div>
@@ -79,20 +82,31 @@
                     <!-- Kolom Kanan -->
                     <div class="col-md-6">
                        
-                        <div class="form-group">
-                            <label>Golongan</label>
-                            <select class="form-control" name="golongan_id">
-                                @foreach($golongan as $dt)
-                                <option value="{{ $dt->id }}" {{ $pegawai->golongan_id == $dt->id ? 'selected' : '' }}>{{ $dt->nama }}</option>
-                                @endforeach
+                    <div class="form-group">
+                            <label for="golongandarah">golongandarah</label>
+                            <select class="form-control" id="golongandarah" name="golongandarah">
+                                <option value="" disabled selected>Pilih golongandarah</option>
+                                <option value="-O" {{ old('golongandarah', $pegawai->golongandarah) == '-O' ? 'selected' : '' }}>-O</option>
+                                <option value="+O" {{ old('golongandarah', $pegawai->golongandarah) == '+O' ? 'selected' : '' }}>+O</option>
+                                <option value="-A" {{ old('golongandarah', $pegawai->golongandarah) == '-A' ? 'selected' : '' }}>-A</option>
+                                <option value="+A" {{ old('golongandarah', $pegawai->golongandarah) == '+A' ? 'selected' : '' }}>+A</option>
+                                <option value="-B" {{ old('golongandarah', $pegawai->golongandarah) == '-B' ? 'selected' : '' }}>-B</option>
+                                <option value="+B" {{ old('golongandarah', $pegawai->golongandarah) == '+B' ? 'selected' : '' }}>+B</option>
+                                <option value="-AB" {{ old('golongandarah', $pegawai->golongandarah) == '-AB' ? 'selected' : '' }}>-AB</option>
+                                <option value="+AB" {{ old('golongandarah', $pegawai->golongandarah) == '+AB' ? 'selected' : '' }}>+AB</option>
+                                
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Agama</label>
-                            <select class="form-control" name="agama_id">
-                                @foreach($agama as $dt)
-                                <option value="{{ $dt->id }}" {{ $pegawai->agama_id == $dt->id ? 'selected' : '' }}>{{ $dt->nama }}</option>
-                                @endforeach
+                            <label for="agama">Agama</label>
+                            <select class="form-control" id="agama" name="agama">
+                                <option value="" disabled selected>Pilih Agama</option>
+                                <option value="Islam" {{ old('agama', $pegawai->agama) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="Kristen Protestan" {{ old('agama', $pegawai->agama) == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                                <option value="Kristen Katolik" {{ old('agama', $pegawai->agama) == 'Kristen Katolik' ? 'selected' : '' }}>Kristen Katolik</option>
+                                <option value="Hindu" {{ old('agama', $pegawai->agama) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                <option value="Buddha" {{ old('agama', $pegawai->agama) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                <option value="Konghucu" {{ old('agama', $pegawai->agama) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                             </select>
                         </div>
                         <div class="form-group">

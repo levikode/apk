@@ -34,13 +34,11 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Foto</th>
                 <th>Nama</th>
                 <th>NIP</th>
                 <th>Jabatan</th>
                 <th>Jenis Kelamin</th>
-                <th>Tempat Lahir</th>
-                <th>Tanggal Lahir</th>
+                <th>Ttl</th>
                 <th>Usia</th>
                 <th>Masa Kerja</th>
                 <th>Status Keluarga</th>
@@ -55,20 +53,17 @@
             @foreach ($dataPegawai as $index => $pegawai)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>
-                <img src="{{ asset('storage/' . $pegawai->foto) }}" alt="Foto {{ $pegawai->foto }}" width="100">
-                </td>
+                
                 <td>{{ $pegawai->nama }}</td>
                 <td>{{ $pegawai->nip }}</td>
                 <td>{{ $pegawai->jabatan->nama}}</td>
                 <td>{{ $pegawai->jeniskelamin }}</td>
-                <td>{{ $pegawai->tempatlahir }}</td>
-                <td>{{ $pegawai->tanggallahir }}</td>
+                <td>{{ $pegawai->ttl }}</td>
                 <td>{{ $pegawai->usia }}</td>
                 <td>{{ $pegawai->masakerja }}</td>
-                <td>{{ $pegawai->keluarga->nama}}</td>
-                <td>{{ $pegawai->golongan->nama }}</td>
-                <td>{{ $pegawai->agama->nama}}</td>
+                <td>{{ $pegawai->statuskeluarga}}</td>
+                <td>{{ $pegawai->golongandarah}}</td>
+                <td>{{ $pegawai->agama}}</td>
                 <td>{{ $pegawai->unitkerja->nama }}</td>
                 <td>{{ $pegawai->alamat }}</td>
                 <td>{{ $pegawai->user->name}}</td>

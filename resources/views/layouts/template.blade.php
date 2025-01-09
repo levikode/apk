@@ -57,9 +57,6 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Master Data:</h6>
-                        <a class="collapse-item" href="{{ route('golongan.index') }}">Golongan Darah</a>
-                        <a class="collapse-item" href="{{ route('keluarga.index') }}">Keluarga</a>
-                        <a class="collapse-item" href="{{ route('agama.index') }}">Agama</a>
                         <a class="collapse-item" href="{{ route('unitkerja.index') }}">Unit Kerja</a>
                         <a class="collapse-item" href="{{ route('jabatan.index') }}">Jabatan</a>
                     </div>

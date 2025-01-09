@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
 use App\Models\User;
-use App\Models\Keluarga;
 use App\Models\Jabatan;
-use App\Models\Golongan;
-use App\Models\Agama;
 use App\Models\Unitkerja;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,20 +20,6 @@ public function exportPdf()
 {
     $dataPegawai = Pegawai::all();
 
-    foreach ($dataPegawai as $pegawai) {
-        $encryptedPath = storage_path('app/public/foto/pegawai/' . $pegawai->foto); // Path file terenkripsi
-
-        if (file_exists($encryptedPath)) {
-            // Baca file terenkripsi dan dekripsi isinya
-            $encryptedContent = file_get_contents($encryptedPath);
-            $decryptedContent = Crypt::decrypt($encryptedContent);
-
-            // Konversi ke Base64
-            $pegawai->image_base64 = 'data:image/jpeg;base64,' . base64_encode($decryptedContent);
-        } else {
-            $pegawai->image_base64 = null; // Jika file tidak ditemukan
-        }
-    }
 
     // Generate PDF
     $pdf = Pdf::loadView('pegawai.pdf', compact('dataPegawai'));
@@ -68,9 +51,6 @@ public function exportPdf()
         return view('pegawai.create')->with([
             "title" => "Tambah Data Pegawai",
             "user" => User::all(),
-            "keluarga" => Keluarga::all(),
-            "golongan" => Golongan::all(),
-            "agama" => Agama::all(),
             "unitkerja" => Unitkerja::all(),
             "jabatan" => Jabatan::all()
         ]);
@@ -84,20 +64,25 @@ public function exportPdf()
             "nama" => "required",
             "nip" => "required|digits_between:6,16",
             "jeniskelamin" => "required",
-            "tempatlahir" => "required",
             "usia" => "required",
             "masakerja" => "required",
-            "golongan_id" => "required",
-            "keluarga_id" => "required",
-            "agama_id" => "required",
+            "golongandarah" => "required",
+            "statuskeluarga" => "required",
+            "agama" => "required",
             "unitkerja_id" => "required",
             "jabatan_id" => "required",
-            "tanggallahir" => "required",
+            "tempat_lahir" => "required",
+            "tanggal_lahir" => "required|date",
             "alamat" => "required",
             "foto" => "nullable|image|mimes:jpeg,png,jpg|max:2048",
         ]);
 
-        $data = $request->all();
+        // Gabungkan tempat dan tanggal lahir
+        $ttl = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
+
+        // Data yang akan disimpan
+        $data = $request->except(['tempat_lahir', 'tanggal_lahir']);
+        $data['ttl'] = $ttl;
 
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('pegawai/foto', 'public');
@@ -114,9 +99,6 @@ public function exportPdf()
         return view('pegawai.edit', compact('pegawai'))->with([
             "title" => "Ubah Data Pegawai",
             "user" => User::all(),
-            "keluarga" => Keluarga::all(),
-            "golongan" => Golongan::all(),
-            "agama" => Agama::all(),
             "unitkerja" => Unitkerja::all(),
             "jabatan" => Jabatan::all()
         ]);
@@ -130,19 +112,36 @@ public function exportPdf()
             "nama" => "required",
             "nip" => "required|digits_between:6,16",
             "jeniskelamin" => "required",
-            "tempatlahir" => "required",
             "usia" => "required",
             "masakerja" => "required",
-            "golongan_id" => "required",
-            "keluarga_id" => "required",
-            "agama_id" => "required",
+            "golongandarah" => "required",
+            "statuskeluarga" => "required",
+            "agama" => "required",
             "unitkerja_id" => "required",
             "jabatan_id" => "required",
-            "tanggallahir" => "required",
+            "tempat_lahir" => "",
+          "tanggal_lahir" => "",
             "alamat" => "required",
             "foto" => "nullable|image|mimes:jpeg,png,jpg|max:2048",
         ]);
 
+        // Data awal
+$ttl = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
+
+// Pisahkan data berdasarkan koma
+$data = explode(', ', $ttl);
+
+// Pastikan array memiliki dua elemen
+$tempat_lahir = isset($data[0]) ? $data[0] : '';
+$tanggal_lahir = isset($data[1]) ? $data[1] : '';
+
+// Output hasil
+echo "Tempat Lahir: " . $tempat_lahir . "<br>";
+echo "Tanggal Lahir: " . $tanggal_lahir . "<br>";
+
+
+
+        
         $data = $request->all();
 
         if ($request->hasFile('foto')) {

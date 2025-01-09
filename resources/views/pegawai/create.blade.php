@@ -41,12 +41,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="tempatlahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Masukkan Tempat Lahir">
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" value="{{ old('tempat_lahir') }}">
                         </div>
+
                         <div class="form-group">
-                            <label for="tanggallahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggallahir" name="tanggallahir">
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                         </div>
                         <div class="form-group">
                             <label for="usia">Usia</label>
@@ -69,27 +70,39 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Keluarga</label>
-                            <select class="form-control" name="keluarga_id">
-                                @foreach($keluarga as $dt)
-                                <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
-                                @endforeach
+                            <label for="statuskeluarga">statuskeluarga</label>
+                            <select class="form-control" id="statuskeluarga" name="statuskeluarga">
+                                <option value="" disabled selected>Pilih status keluarga</option>
+                                <option value="menikah" {{ old('statuskeluarga') == 'menikah' ? 'selected' : '' }}>menikah</option>
+                                <option value="belum menikah" {{ old('statuskeluarga') == 'belum menikah' ? 'selected' : '' }}>belum menikah</option>
+                                <option value="cerai" {{ old('statuskeluarga') == 'cerai' ? 'selected' : '' }}>cerai</option>
+                               
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Golongan</label>
-                            <select class="form-control" name="golongan_id">
-                                @foreach($golongan as $dt)
-                                <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
-                                @endforeach
+                            <label for="golongandarah">golongandarah</label>
+                            <select class="form-control" id="golongandarah" name="golongandarah">
+                                <option value="" disabled selected>Pilih Golongan darah</option>
+                                <option value="-O" {{ old('golongandarah') == '-O' ? 'selected' : '' }}>-O</option>
+                                <option value="+O" {{ old('golongandarah') == '+O' ? 'selected' : '' }}>+O</option>
+                                <option value="-A" {{ old('golongandarah') == '-A' ? 'selected' : '' }}>-A</option>
+                                <option value="+A" {{ old('golongandarah') == '+A' ? 'selected' : '' }}>+A</option>
+                                <option value="-B" {{ old('golongandarah') == '-B' ? 'selected' : '' }}>-B</option>
+                                <option value="+B" {{ old('golongandarah') == '+B' ? 'selected' : '' }}>+B</option>
+                                <option value="-AB" {{ old('golongandarah') == '-AB' ? 'selected' : '' }}>-AB</option>
+                                <option value="+AB" {{ old('golongandarah') == '+AB' ? 'selected' : '' }}>+AB</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Agama</label>
-                            <select class="form-control" name="agama_id">
-                                @foreach($agama as $dt)
-                                <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
-                                @endforeach
+                            <label for="agama">Agama</label>
+                            <select class="form-control" id="agama" name="agama">
+                                <option value="" disabled selected>Pilih Agama</option>
+                                <option value="Islam" {{ old('agama') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="Kristen Protestan" {{ old('agama') == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                                <option value="Kristen Katolik" {{ old('agama') == 'Kristen Katolik' ? 'selected' : '' }}>Kristen Katolik</option>
+                                <option value="Hindu" {{ old('agama') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                <option value="Buddha" {{ old('agama') == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                <option value="Konghucu" {{ old('agama') == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                             </select>
                         </div>
                         <div class="form-group">

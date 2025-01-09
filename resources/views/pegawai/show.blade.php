@@ -52,13 +52,10 @@
                                 <td>{{ $data[0]->jeniskelamin }}</td>
                             </tr>
                             <tr>
-                                <th>Tempat Lahir</th>
-                                <td>{{ $data[0]->tempatlahir }}</td>
+                                <th>Ttl</th>
+                                <td>{{ $data[0]->ttl }}</td>
                             </tr>
-                            <tr>
-                                <th>Tanggal Lahir</th>
-                                <td>{{ $data[0]->tanggallahir }}</td>
-                            </tr>
+                           
                             <tr>
                                 <th>Usia</th>
                                 <td>{{ $data[0]->usia }}</td>
@@ -72,16 +69,16 @@
                                 <td>{{ $data[0]->user->name }}</td>
                             </tr>
                             <tr>
-                                <th>Keluarga</th>
-                                <td>{{ $data[0]->keluarga->nama }}</td>
+                                <th>statuskeluarga</th>
+                                <td>{{ $data[0]->statuskeluarga }}</td>
                             </tr>
                             <tr>
-                                <th>Golongan</th>
-                                <td>{{ $data[0]->golongan->nama }}</td>
+                                <th>Golongan darah</th>
+                                <td>{{ $data[0]->golongandarah}}</td>
                             </tr>
                             <tr>
                                 <th>Agama</th>
-                                <td>{{ $data[0]->agama->nama }}</td>
+                                <td>{{ $data[0]->agama }}</td>
                             </tr>
                             <tr>
                                 <th>Unit Kerja</th>

@@ -18,7 +18,7 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-11 col-md-6">
+        <div class=" col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3 d-flex justify-content-between">
                     <a href="{{ route('pegawai.pdf') }}" class="btn btn-primary">Download PDF</a>
@@ -51,8 +51,7 @@
                                     <th>NIP</th>
                                     <th>Jabatan</th>
                                     <th>Jenis Kelamin</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
+                                    <th>Ttl</th>
                                     <th>Usia</th>
                                     <th>Masa Kerja</th>
                                     <th>Status Keluarga</th>
@@ -79,13 +78,12 @@
                                     <td>{{ $dt->nip }}</td>
                                     <td>{{ $dt->jabatan->nama}}</td>
                                     <td>{{ $dt->jeniskelamin }}</td>
-                                    <td>{{ $dt->tempatlahir }}</td>
-                                    <td>{{ $dt->tanggallahir }}</td>
+                                    <td>{{ $dt->ttl }}</td>
                                     <td>{{ $dt->usia }}</td>
                                     <td>{{ $dt->masakerja }}</td>
-                                    <td>{{ $dt->keluarga->nama}}</td>
-                                    <td>{{ $dt->golongan->nama }}</td>
-                                    <td>{{ $dt->agama->nama}}</td>
+                                    <td>{{ $dt->statuskeluarga}}</td>
+                                    <td>{{ $dt->golongandarah }}</td>
+                                    <td>{{ $dt->agama}}</td>
                                     <td>{{ $dt->unitkerja->nama }}</td>
                                     <td>{{ $dt->alamat }}</td>
                                     <td>{{ $dt->user->name}}</td>
