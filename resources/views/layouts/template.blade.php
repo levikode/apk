@@ -15,16 +15,19 @@
     <!-- SB Admin 2 CSS -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- Toastr Notification -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     @yield('tambahanCSS')
 </head>
 
 <body id="page-top">
 
     <div id="wrapper">
-   
+
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
-     
+
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15"></div>
@@ -48,7 +51,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDataMaster"
                     aria-expanded="true" aria-controls="collapseDataMaster">
                     <i class="fas fa-boxes"></i>
-                    <span>Data Master</span>
+                    <span>Data Pegawai</span>
                 </a>
                 <div id="collapseDataMaster" class="collapse {{ ($title === 'Produk') ? 'show' : '' }}" aria-labelledby="headingDataMaster"
                     data-parent="#accordionSidebar">
@@ -80,14 +83,14 @@
             </li>
 
             <!-- Nav Item - Laporan -->
-          
+
             <div class="text-center d-none d-md-inline">
                 <br>
                 <button class="rounded-sn border-0" id="sidebarToggle"></button>
             </div>
             <hr class="sidebar-divider d-none d-md-block">
-          
-         
+
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -100,13 +103,15 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
+
                     </button>
-         
+
                     <!-- Navbar -->
                     <ul class="navbar-nav ml-auto">
-                 
+
                         <!-- User Information -->
                         <li class="nav-item dropdown no-arrow">
+
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user fa-fw"></i>
@@ -128,7 +133,7 @@
                                 </form>
                             </div>
                         </li>
-                      
+
 
                     </ul>
                 </nav>
@@ -189,6 +194,18 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+            @if(session('success'))
+            toastr.success("{{ session('success') }}");
+            @elseif(session('error'))
+                toastr.error("{{ session('error') }}");
+            @elseif(session('info'))
+                toastr.info("{{ session('info') }}");
+            @elseif(session('warning'))
+                toastr.warning("{{ session('warning') }}");
+            @endif
+        </script>
 
     @yield('tambahanJS')
 

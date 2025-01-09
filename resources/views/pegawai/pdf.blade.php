@@ -8,15 +8,23 @@
             font-family: Arial, sans-serif;
             font-size: 12px;
         }
+
         table {
             border-collapse: collapse;
             width: 100%;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
+        img {
+        max-width: 100px; /* Atur ukuran gambar */
+        height: auto;
+    }
     </style>
 </head>
 
@@ -26,6 +34,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Foto</th>
                 <th>Nama</th>
                 <th>NIP</th>
                 <th>Jabatan</th>
@@ -46,7 +55,9 @@
             @foreach ($dataPegawai as $index => $pegawai)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-               
+                <td>
+                <img src="{{ asset('storage/' . $pegawai->foto) }}" alt="Foto {{ $pegawai->foto }}" width="100">
+                </td>
                 <td>{{ $pegawai->nama }}</td>
                 <td>{{ $pegawai->nip }}</td>
                 <td>{{ $pegawai->jabatan->nama}}</td>

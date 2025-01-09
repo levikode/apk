@@ -31,17 +31,17 @@ use App\Http\Controllers\DashboardController;
 //     })->middleware('auth');
 Route::get('/pegawai/pdf', [PegawaiController::class, 'exportPdf'])->name('pegawai.pdf');
 
-Route::resource('pegawai',PegawaiController::class)->middleware('auth');
+Route::resource('pegawai', PegawaiController::class)->middleware('auth');
 Route::resource('golongan', GolonganController::class)->middleware('auth');
 Route::resource('keluarga', KeluargaController::class)->middleware('auth');
 Route::resource('jabatan', JabatanController::class)->middleware('auth');
 Route::resource('agama', AgamaController::class)->middleware('auth');
 Route::resource('unitkerja', UnitkerjaController::class)->middleware('auth');
 
-Route::resource('user',UserController::class)->except('destroy','create','show','update','edit');
-Route::get('login',[LoginController::class,'loginView'])->name('login');
-Route::post('login',[LoginController::class,'authenticate']);
-Route::post('logout',[LoginController::class,'logout'])->name('auth.logout')->middleware('auth');
+Route::resource('user', UserController::class)->except('destroy', 'create', 'show', 'update', 'edit');
+Route::get('login', [LoginController::class, 'loginView'])->name('login');
+Route::post('login', [LoginController::class, 'authenticate']);
+Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 

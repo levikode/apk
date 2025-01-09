@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('judulh1','Admin - Tambah Pegawai')
+@section('judulh1','Tambah Pegawai')
 
 @section('konten')
 <div class="container">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nip">NIP</label>
-                            <input type="number" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP" required>
+                            <input type="number" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP" maxlength="16" required>
                         </div>
                         <div class="form-group">
                             <label for="jeniskelamin">Jenis Kelamin</label>
@@ -128,4 +128,12 @@
         </form>
     </div>
 </div>
+<script>
+document.getElementById('nip').addEventListener('input', function (e) {
+    if (this.value.length > 16) {
+        this.value = this.value.slice(0, 16); // Potong input ke 16 karakter
+    }
+});
+
+</script>
 @endsection

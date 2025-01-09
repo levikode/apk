@@ -23,44 +23,7 @@
             <h1 class="mt-4">Dashboard</h1>
         </div> -->
     </div>
-    <canvas id="pegawaiChart" width="400" height="50"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Lakukan request ke backend untuk mendapatkan data
-        fetch('/chart-data')
-            .then(response => response.json())
-            .then(data => {
-                var ctx = document.getElementById('pegawaiChart').getContext('2d');
-                var pegawaiChart = new Chart(ctx, {
-                    type: 'bar',  // Tipe chart, bisa juga 'line' atau 'pie'
-                    data: {
-                        labels: ['Pegawai', 'User'],
-                        datasets: [{
-                            label: 'Total Data',
-                            data: [data.pegawai, data.user],  // Data dari backend
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                            ],
-                            borderColor: [
-                                'rgb(94, 107, 116)',
-                                'rgb(22, 111, 111)',
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            });
-    });
-</script>
+   
 <div class="row">
 <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-left-success shadow h-100 py-2">
@@ -101,6 +64,44 @@
       </div>
     </div>
     </div>
+    <canvas id="pegawaiChart" width="400" height="50"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lakukan request ke backend untuk mendapatkan data
+        fetch('/chart-data')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('pegawaiChart').getContext('2d');
+                var pegawaiChart = new Chart(ctx, {
+                    type: 'bar',  // Tipe chart, bisa juga 'line' atau 'pie'
+                    data: {
+                        labels: ['Pegawai', 'User'],
+                        datasets: [{
+                            label: 'Total Data',
+                            data: [data.pegawai, data.user],  // Data dari backend
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgb(94, 107, 116)',
+                                'rgb(22, 111, 111)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    });
+</script>
     <!-- Statistics Overview -->
     <!-- <div class="row">
         <div class="col-md-3">
@@ -118,35 +119,6 @@
         </div>
     </div>
 
-    <!-- Table Data Terbaru -->
-    <!-- resources/views/login.blade.php<div class="row">
-        <div class="col-md-12">
-            <div class="card mb-4">
-                <div class="card-header">Data Pegawai Terbaru</div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Petugas</th>
-                                <th>Nama</th>
-                                <th>NIP</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($data as $dt)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ optional($dt->user)->name }}</td>
-                                <td>{{ $dt->nama }}</td>
-                                <td>{{ $dt->nip }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>
+
 @endsection

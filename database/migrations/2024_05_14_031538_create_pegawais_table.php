@@ -21,7 +21,7 @@ return new class extends Migration
             $table->bigInteger('unitkerja_id')->unsigned();
             $table->string('nama');
             $table->string('jeniskelamin');
-            $table->integer('nip');
+            $table->bigInteger('nip');
             $table->integer('usia');
             $table->integer('masakerja');
             $table->string('alamat');

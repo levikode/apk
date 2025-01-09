@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('judulh1','Admin - Ubah Pegawai')
+@section('judulh1',' Ubah Pegawai')
 
 @section('konten')
 <div class="container">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nip">NIP</label>
-                            <input type="number" class="form-control" id="nip" name="nip" value="{{ old('nip', $pegawai->nip) }}" required>
+                            <input type="number" class="form-control" id="nip" name="nip" value="{{ old('nip', $pegawai->nip) }}" maxlength="16" required>
                         </div>
                         <div class="form-group">
                             <label for="jeniskelamin">Jenis Kelamin</label>
@@ -58,10 +58,6 @@
                             <label for="masakerja">Masa Kerja</label>
                             <input type="number" class="form-control" id="masakerja" name="masakerja" value="{{ old('masakerja', $pegawai->masakerja) }}">
                         </div>
-                    </div>
-
-                    <!-- Kolom Kanan -->
-                    <div class="col-md-6">
                         <div class="form-group">
                             <label>User</label>
                             <select class="form-control" name="user_id">
@@ -78,6 +74,11 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+
+                    <!-- Kolom Kanan -->
+                    <div class="col-md-6">
+                       
                         <div class="form-group">
                             <label>Golongan</label>
                             <select class="form-control" name="golongan_id">
@@ -115,7 +116,13 @@
                             <textarea class="form-control" id="alamat" name="alamat" rows="3">{{ old('alamat', $pegawai->alamat) }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="foto">Foto</label>
+                            <label for="foto" class="d-flex">Foto</label>
+                                        @if ($pegawai->foto)
+                                        <img src="{{ asset('storage/' . $pegawai->foto) }}" alt="Foto {{ $pegawai->nama }}" width="100" class="mb-3">
+                                        @else
+                                        Tidak ada foto
+                                        @endif
+                                  
                             <input type="file" class="form-control-file" id="foto" name="foto">
                         </div>
                     </div>
@@ -130,4 +137,12 @@
         </form>
     </div>
 </div>
+<script>
+document.getElementById('nip').addEventListener('input', function (e) {
+    if (this.value.length > 16) {
+        this.value = this.value.slice(0, 16); // Potong input ke 16 karakter
+    }
+});
+
+</script>
 @endsection

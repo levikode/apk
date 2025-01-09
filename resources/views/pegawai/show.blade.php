@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('judulh1','Admin - Pegawai')
+@section('judulh1','Tampil Pegawai')
 @section('konten')
 <div class="container">
     @if ($errors->any())
