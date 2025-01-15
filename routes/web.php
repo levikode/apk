@@ -3,13 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\GolonganController;
-use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\AgamaController;
-use App\Http\Controllers\UnitkerjaController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UnitkerjaController;
 
 
 /*
@@ -29,13 +27,14 @@ use App\Http\Controllers\DashboardController;
 //         "title"=>"Dashboard"
 //     ]);
 //     })->middleware('auth');
-Route::get('/pegawai/pdf', [PegawaiController::class, 'exportPdf'])->name('pegawai.pdf');
+
+Route::get('/laporan/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
+Route::resource('/laporan', LaporanController::class);
 
 Route::resource('pegawai', PegawaiController::class)->middleware('auth');
-Route::resource('golongan', GolonganController::class)->middleware('auth');
-Route::resource('keluarga', KeluargaController::class)->middleware('auth');
+Route::get('/pegawai/pdf', [PegawaiController::class, 'exportPdf'])->name('pegawai.pdf');
+
 Route::resource('jabatan', JabatanController::class)->middleware('auth');
-Route::resource('agama', AgamaController::class)->middleware('auth');
 Route::resource('unitkerja', UnitkerjaController::class)->middleware('auth');
 
 Route::resource('user', UserController::class)->except('destroy', 'create', 'show', 'update', 'edit');

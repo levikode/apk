@@ -22,10 +22,11 @@ return new class extends Migration
             $table->string('statuskeluarga');
             $table->string('golongandarah');
             $table->bigInteger('nip');
-            $table->integer('usia');
+            $table->integer('usia')->nullable();
             $table->integer('masakerja');
             $table->string('alamat');
             $table->string('ttl');
+            $table->date('tmt');
             $table->string('foto')->nullable(); // Kolom untuk menyimpan path foto
             $table->timestamps();           
         });

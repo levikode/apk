@@ -10,7 +10,7 @@ use Illuminate\Database\Relations\HasMany;
 class Pegawai extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','nama','nip','jeniskelamin','usia','masakerja','statuskeluarga','golongandarah','agama','unitkerja_id','jabatan_id','ttl','alamat','foto'];
+    protected $fillable=['user_id','nama','nip','jeniskelamin','usia','masakerja','statuskeluarga','golongandarah','agama','unitkerja_id','jabatan_id','ttl','tmt','alamat','foto'];
 
     public function user():BelongsTo
     {

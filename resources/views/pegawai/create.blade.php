@@ -14,6 +14,7 @@
     </div>
     @endif
 
+
     <div class="card shadow-lg">
         <div class="card-header bg-success text-white">
             <h3 class="card-title">Tambah Data Pegawai</h3>
@@ -48,16 +49,24 @@
                         <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir</label>
                             <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
+                            <small id="tanggalLahirError" class="text-danger" style="display: none;">
+                                Pegawai harus berusia minimal 17 tahun!
+                            </small>
                         </div>
                         <div class="form-group">
                             <label for="usia">Usia</label>
-                            <input type="number" class="form-control" id="usia" name="usia" placeholder="Masukkan Usia">
+                            <input type="number" class="form-control" id="usia" name="usia" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="tmt">tmt</label>
+                            <input type="date" class="form-control" id="tmt" name="tmt" value="{{ old('tmt') }}">
+                            
                         </div>
                         <div class="form-group">
                             <label for="masakerja">Masa Kerja</label>
                             <input type="number" class="form-control" id="masakerja" name="masakerja" placeholder="Masukkan Masa Kerja">
                         </div>
-                    
+
                     </div>
                     <!-- Kolom Kanan -->
                     <div class="col-md-6">
@@ -76,7 +85,7 @@
                                 <option value="menikah" {{ old('statuskeluarga') == 'menikah' ? 'selected' : '' }}>menikah</option>
                                 <option value="belum menikah" {{ old('statuskeluarga') == 'belum menikah' ? 'selected' : '' }}>belum menikah</option>
                                 <option value="cerai" {{ old('statuskeluarga') == 'cerai' ? 'selected' : '' }}>cerai</option>
-                               
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -114,18 +123,18 @@
                             </select>
                         </div>
                         <div class="form-group">
-                    <label>Jabatan</label>
-                    <select class="form-control" name="jabatan_id">
-                        @foreach($jabatan as $dt )
-                        <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                            <label>Jabatan</label>
+                            <select class="form-control" name="jabatan_id">
+                                @foreach($jabatan as $dt )
+                                <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
                             <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat"></textarea>
                         </div>
-                     
+
                         <div class="form-group">
                             <label for="foto">Foto</label>
                             <input type="file" class="form-control-file" id="foto" name="foto">
@@ -141,12 +150,56 @@
         </form>
     </div>
 </div>
-<script>
-document.getElementById('nip').addEventListener('input', function (e) {
-    if (this.value.length > 16) {
-        this.value = this.value.slice(0, 16); // Potong input ke 16 karakter
-    }
-});
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+<script>
+    document.getElementById('nip').addEventListener('input', function(e) {
+        if (this.value.length > 16) {
+            this.value = this.value.slice(0, 16); // Potong input ke 16 karakter
+        }
+    });
+
+    // Script untuk menghitung usia otomatis berdasarkan tanggal lahir yang dipilih
+    document.getElementById('tanggal_lahir').addEventListener('change', function() {
+        var tanggalLahir = new Date(this.value);
+        var usia = new Date().getFullYear() - tanggalLahir.getFullYear();
+        var m = new Date().getMonth() - tanggalLahir.getMonth();
+        if (m < 0 || (m === 0 && new Date().getDate() < tanggalLahir.getDate())) {
+            usia--;
+        }
+        // Menampilkan usia di field usia
+        document.getElementById('usia').value = usia;
+    });
+    document.getElementById('tmt').addEventListener('change', function() {
+        var tmt = new Date(this.value);
+        var masakerja = new Date().getFullYear() - tmt.getFullYear();
+        var m = new Date().getMonth() - tmt.getMonth();
+        if (m < 0 || (m === 0 && new Date().getDate() < tmt.getDate())) {
+            masakerja--;
+        }
+        // Menampilkan masakerja di field masakerja
+        document.getElementById('masakerja').value = masakerja;
+    });
+
+    const tanggalLahirInput = document.getElementById('tanggal_lahir');
+    const tanggalLahirError = document.getElementById('tanggalLahirError');
+    const submitButton = document.getElementById('submitButton');
+
+    tanggalLahirInput.addEventListener('input', function() {
+        const tanggalLahir = new Date(this.value);
+        const today = new Date();
+        const umur = today.getFullYear() - tanggalLahir.getFullYear();
+        const bulan = today.getMonth() - tanggalLahir.getMonth();
+        const hari = today.getDate() - tanggalLahir.getDate();
+
+        // Validasi usia minimal 17 tahun
+        if (umur < 17 || (umur === 17 && (bulan < 0 || (bulan === 0 && hari < 0)))) {
+            tanggalLahirError.style.display = 'block';
+            submitButton.disabled = true;
+        } else {
+            tanggalLahirError.style.display = 'none';
+            submitButton.disabled = false;
+        }
+    });
 </script>
 @endsection

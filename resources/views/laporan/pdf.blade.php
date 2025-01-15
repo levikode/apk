@@ -30,8 +30,8 @@
 
 <body>
     <h1>Data Pegawai</h1>
-    @if(request('start_date') && request('end_date'))
-        <p>Data dari tanggal {{ request('start_date') }} hingga {{ request('end_date') }}</p>
+    @if(isset($start_date) && isset($end_date))
+    <p>Periode: {{ request('start_date') }} - {{ request('end_date') }}</p>
         <table>
         <thead>
             <tr>
@@ -73,6 +73,7 @@
                 <td>{{ $pegawai->user->name}}</td>
 
             </tr>
+            
             @endforeach
         </tbody>
     </table>
@@ -96,6 +97,7 @@
                 <th>Alamat</th>
                 <th>Petugas</th>
             </tr>
+            
         </thead>
         <tbody>
             @foreach ($pegawai as $index => $pegawai)

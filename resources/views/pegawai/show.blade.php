@@ -61,6 +61,11 @@
                                 <td>{{ $data[0]->usia }}</td>
                             </tr>
                             <tr>
+                            <tr>
+                                <th>tmt</th>
+                                <td>{{ $data[0]->tmt }}</td>
+                            </tr>
+                            <tr>
                                 <th>Masa Kerja</th>
                                 <td>{{ $data[0]->masakerja }}</td>
                             </tr>

@@ -43,18 +43,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="ttl">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="ttl" name="ttl" placeholder="Masukkan Tempat Lahir" value="{{ old('ttl', $pegawai->ttl) }}">
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" value="{{ old('tempat_lahir', $pegawai->tempat_lahir) }}">
                         </div>
 
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir</label>
                             <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir', $pegawai->tanggal_lahir) }}">
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label for="usia">Usia</label>
                             <input type="number" class="form-control" id="usia" name="usia" value="{{ old('usia', $pegawai->usia) }}">
                         </div>
+                        <div class="form-group">
+                            <label for="tmt">tmt</label>
+                            <input type="date" class="form-control" id="tmt" name="tmt" value="{{ old('tmt', $pegawai->tmt) }}">
+                        </div>
+
                         <div class="form-group">
                             <label for="masakerja">Masa Kerja</label>
                             <input type="number" class="form-control" id="masakerja" name="masakerja" value="{{ old('masakerja', $pegawai->masakerja) }}">
@@ -151,6 +156,8 @@
         </form>
     </div>
 </div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 <script>
 document.getElementById('nip').addEventListener('input', function (e) {
     if (this.value.length > 16) {
@@ -158,5 +165,26 @@ document.getElementById('nip').addEventListener('input', function (e) {
     }
 });
 
+    // Script untuk menghitung usia otomatis berdasarkan tanggal lahir yang dipilih
+    document.getElementById('tanggal_lahir').addEventListener('change', function() {
+        var tanggalLahir = new Date(this.value);
+        var usia = new Date().getFullYear() - tanggalLahir.getFullYear();
+        var m = new Date().getMonth() - tanggalLahir.getMonth();
+        if (m < 0 || (m === 0 && new Date().getDate() < tanggalLahir.getDate())) {
+            usia--;
+        }
+        // Menampilkan usia di field usia
+        document.getElementById('usia').value = usia;
+    });
+ document.getElementById('tmt').addEventListener('change', function() {
+        var tmt = new Date(this.value);
+        var masakerja = new Date().getFullYear() - tmt.getFullYear();
+        var m = new Date().getMonth() - tmt.getMonth();
+        if (m < 0 || (m === 0 && new Date().getDate() < tmt.getDate())) {
+            masakerja--;
+        }
+        // Menampilkan masakerja di field masakerja
+        document.getElementById('masakerja').value = masakerja;
+    });
 </script>
 @endsection

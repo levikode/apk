@@ -8,15 +8,15 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1',' Users')
-@section('judulh3','User')
+@section('judulh1',' Admin ')
+@section('judulh3','Admin')
 @section('konten')
 
 <div class="col-md-4">
 
     <div class="card card-success">
         <div class="card-header">
-            <h3 class="card-title">Input User</h3>
+            <h3 class="card-title">Input Admin</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -82,7 +82,7 @@
 <div class="col-md-8">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data User</h3>
+            <h3 class="card-title">Data Admin</h3>
         </div>
         <!-- /.card-header -->
 

@@ -75,7 +75,13 @@
             <li class="nav-item {{ ($title === 'user') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('user.index') }}">
                     <i class="fas fa-user"></i>
-                    <span>Users</span>
+                    <span>Admin</span>
+                </a>
+            </li>
+            <li class="nav-item {{ ($title === 'Pegawai') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('laporan.index') }}">
+                <i class="fas fa-regular fa-file-pdf"></i>
+                    <span>Laporan</span>
                 </a>
             </li>
 
