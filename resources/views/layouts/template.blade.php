@@ -67,7 +67,7 @@
             <li class="nav-item {{ ($title === 'Pegawai') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('pegawai.index') }}">
                     <i class="fas fa-users"></i>
-                    <span>Pegawai</span>
+                    <span>Pendataan Pegawai</span>
                 </a>
             </li>
 

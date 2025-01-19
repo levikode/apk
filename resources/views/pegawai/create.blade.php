@@ -71,7 +71,7 @@
                     <!-- Kolom Kanan -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>User</label>
+                            <label>Admin</label>
                             <select class="form-control" name="user_id">
                                 @foreach($user as $dt)
                                 <option value="{{ $dt->id }}">{{ $dt->name }}</option>

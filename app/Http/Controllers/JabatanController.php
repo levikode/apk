@@ -61,14 +61,14 @@ class JabatanController extends Controller
         }
 
         $jabatan->update($request->all());
-        return redirect()->route('jabatan.index')->with('updated','Data Jabatan Berhasil Diubah');
+        return redirect()->route('jabatan.index')->with('success','Data Jabatan Berhasil Diubah');
     }
 
     // Fungsi untuk menghapus data Jabatan
     public function destroy($id):RedirectResponse
     {
         Jabatan::where('id',$id)->delete();
-        return redirect()->route('jabatan.index')->with('deleted','Data Pegawai Berhasil Dihapus');
+        return redirect()->route('jabatan.index')->with('error','Data Pegawai Berhasil Dihapus');
     }
 
 }

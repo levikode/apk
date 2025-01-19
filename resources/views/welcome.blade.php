@@ -26,12 +26,12 @@
    
 <div class="row">
 <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2">
+      <div class="card border-left-success shadow h-100 py-2"> <a href="{{ route('pegawai.index') }}">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-              Total Pegawai:
+              Total Pendataan Pegawai:
               </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                {{ $data->count() }}
@@ -42,10 +42,11 @@
             </div>
           </div>
         </div>
+        </a>
       </div>
     </div>
 <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2">
+      <div class="card border-left-success shadow h-100 py-2"><a href="{{ route('user.index') }}">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
@@ -62,6 +63,49 @@
           </div>
         </div>
       </div>
+</a>
+    </div>
+<div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2"><a href="{{ route('jabatan.index') }}">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              Total Jabatan:
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ $totalJabatan }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-arrow-down fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
+
+    </div>
+<div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2"><a href="{{ route('unitkerja.index') }}">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              Total Unit Kerja:
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ $totalunitkerja }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-arrow-down fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
+
     </div>
     </div>
     <canvas id="pegawaiChart" width="400" height="50"></canvas>

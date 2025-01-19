@@ -44,4 +44,37 @@ class UserController extends Controller
         // Redirect ke halaman daftar user dengan pesan sukses
         return redirect()->route('user.index')->with('success', 'Data User Berhasil Ditambahkan');
     }
+
+    // Fungsi untuk menampilkan form edit data User
+    public function edit(User $user):View
+    {
+        return view('user.edituser',compact('user'))->with([
+            "title" => "Ubah Data User",
+        ]);
+    }
+
+    // Fungsi untuk memperbarui data User yang diedit
+    public function update(User $user, Request $request):RedirectResponse
+    {
+        $request->validate([
+            "name" => "required", 
+            "email" => "required", 
+            "password" => "required" 
+        ]);
+        if (empty($request['hp'])) {
+            $request['hp']='null';
+        if (empty($request['alamat'])) 
+            $request['alamat']='null';
+        }
+
+        $user->update($request->all());
+        return redirect()->route('user.index')->with('success','Data User Berhasil Diubah');
+    }
+    
+    // Fungsi untuk menghapus data User
+    public function destroy($id):RedirectResponse
+    {
+        User::where('id',$id)->delete();
+        return redirect()->route('user.index')->with('error','Data User Berhasil Dihapus');
+    }
 }

@@ -175,6 +175,16 @@ class PegawaiController extends Controller
     // Fungsi untuk menampilkan form edit data pegawai
     public function edit(Pegawai $pegawai): View
     {
+            // Pisahkan ttl menjadi tempat_lahir dan tanggal_lahir
+        if (!empty($pegawai->ttl)) {
+            $data = explode(', ', $pegawai->ttl);
+            $pegawai->tempat_lahir = $data[0] ?? '';
+            $pegawai->tanggal_lahir = $data[1] ?? '';
+        } else {
+            $pegawai->tempat_lahir = '';
+            $pegawai->tanggal_lahir = '';
+        }
+
         return view('pegawai.edit', compact('pegawai'))->with([
             "title" => "Ubah Data Pegawai",
             "user" => User::all(),
@@ -185,71 +195,50 @@ class PegawaiController extends Controller
 
     // Fungsi untuk memperbarui data pegawai yang diedit
     public function update(Pegawai $pegawai, Request $request): RedirectResponse
-    {
-        $validated = $request->validate([
-            "user_id" => "required",
-            "nama" => "required",
-            "nip" => "required|digits_between:6,16",
-            "jeniskelamin" => "required",
-            "usia" => "required",
-            "masakerja" => "required",
-            "golongandarah" => "required",
-            "statuskeluarga" => "required",
-            "agama" => "required",
-            "unitkerja_id" => "required",
-            "jabatan_id" => "required",
-            "tempat_lahir" => "",
-            "tanggal_lahir" => "",
-            "alamat" => "required",
-            "tmt" => "required",
-            "foto" => "nullable|image|mimes:jpeg,png,jpg|max:5048",
-        ]);
-        // Validasi data
-        // $request->validate([
-        //     'nama' => 'required|string|max:255',
-        //     'tanggal_lahir' => [
-        //         'required',
-        //         'date',
-        //         'before:' . now()->subYears(17)->format('Y-m-d'),
-        //     ],
-        // ], [
-        //     'tanggal_lahir.before' => 'Pegawai harus berusia minimal 17 tahun.',
-        // ]);
+{
+    $validated = $request->validate([
+        "user_id" => "required",
+        "nama" => "required",
+        "nip" => "required|digits_between:6,16",
+        "jeniskelamin" => "required",
+        "usia" => "required",
+        "masakerja" => "required",
+        "golongandarah" => "required",
+        "statuskeluarga" => "required",
+        "agama" => "required",
+        "unitkerja_id" => "required",
+        "jabatan_id" => "required",
+        "tempat_lahir" => "required",
+        "tanggal_lahir" => "required",
+        "alamat" => "required",
+        "tmt" => "required",
+        "foto" => "nullable|image|mimes:jpeg,png,jpg|max:5048",
+    ]);
 
-        $validated['usia'] = \Carbon\Carbon::parse($validated['tanggal_lahir'])->age;
-        $validated['masakerja'] = \Carbon\Carbon::parse($validated['tmt'])->age;
+    // Tambahkan usia dan masa kerja
+    $validated['usia'] = \Carbon\Carbon::parse($validated['tanggal_lahir'])->age;
+    $validated['masakerja'] = \Carbon\Carbon::parse($validated['tmt'])->age;
 
-        // Data awal
-        $ttl = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
+    // Gabungkan tempat_lahir dan tanggal_lahir menjadi ttl
+    $validated['ttl'] = $validated['tempat_lahir'] . ', ' . $validated['tanggal_lahir'];
 
-        // Pisahkan data berdasarkan koma
-        $data = explode(', ', $ttl);
-
-        // Pastikan array memiliki dua elemen
-        $tempat_lahir = isset($data[0]) ? $data[0] : '';
-        $tanggal_lahir = isset($data[1]) ? $data[1] : '';
-
-        // Output hasil
-        echo "Tempat Lahir: " . $tempat_lahir . "<br>";
-        echo "Tanggal Lahir: " . $tanggal_lahir . "<br>";
-
-
-
-        $data = $request->all();
-
-        if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
-            if ($pegawai->foto) {
-                Storage::disk('public')->delete($pegawai->foto);
-            }
-
-            $data['foto'] = $request->file('foto')->store('pegawai/foto', 'public');
+    // Periksa apakah ada file foto
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama jika ada
+        if ($pegawai->foto) {
+            Storage::disk('public')->delete($pegawai->foto);
         }
 
-        $pegawai->update($data);
-
-        return redirect()->route('pegawai.index')->with('success', 'Data Pegawai Berhasil Diubah');
+        // Simpan foto baru
+        $validated['foto'] = $request->file('foto')->store('pegawai/foto', 'public');
     }
+
+    // Update data pegawai
+    $pegawai->update($validated);
+
+    return redirect()->route('pegawai.index')->with('success', 'Data Pegawai Berhasil Diubah');
+}
+
 
     // Fungsi untuk menampilkan detail data pegawai
     public function show(): View

@@ -65,7 +65,7 @@
                             <input type="number" class="form-control" id="masakerja" name="masakerja" value="{{ old('masakerja', $pegawai->masakerja) }}">
                         </div>
                         <div class="form-group">
-                            <label>User</label>
+                            <label>Admin</label>
                             <select class="form-control" name="user_id">
                                 @foreach($user as $dt)
                                 <option value="{{ $dt->id }}" {{ $pegawai->user_id == $dt->id ? 'selected' : '' }}>{{ $dt->name }}</option>

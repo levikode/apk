@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pegawai;
 use App\Models\User;
+use App\Models\Jabatan;
+use App\Models\Unitkerja;
 
 class DashboardController extends Controller
 {
@@ -12,8 +14,11 @@ class DashboardController extends Controller
     {
         $data = Pegawai::all();  // Ambil data dari database
         $title = 'Dashboard';    // Set variabel title
-        $user = User::all();  
-        return view('welcome', compact('data', 'title', 'user'));
+        $user = User::all();
+        $totalJabatan = Jabatan::count();        // Menghitung jumlah user
+        $totalunitkerja = Unitkerja::count();        // Menghitung jumlah user
+
+        return view('welcome', compact('data', 'title', 'user','totalJabatan','totalunitkerja'));
     }
   
     public function getChartData()
@@ -23,7 +28,7 @@ class DashboardController extends Controller
 
         return response()->json([
             'pegawai' => $totalPegawai,
-            'user' => $totalUser
+            'user' => $totalUser,
         ]);
     
 }

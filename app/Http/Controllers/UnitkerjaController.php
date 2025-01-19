@@ -62,14 +62,14 @@ class UnitkerjaController extends Controller
         }
 
         $unitkerja->update($request->all());
-        return redirect()->route('unitkerja.index')->with('updated','Data Unitkerja Berhasil Diubah');
+        return redirect()->route('unitkerja.index')->with('success','Data Unitkerja Berhasil Diubah');
     }
 
     // Fungsi untuk menghapus data Unitkerja
     public function destroy($id):RedirectResponse
     {
         Unitkerja::where('id',$id)->delete();
-        return redirect()->route('unitkerja.index')->with('deleted','Data Pegawai Berhasil Dihapus');
+        return redirect()->route('unitkerja.index')->with('er','Data Pegawai Berhasil Dihapus');
     }
 
 }

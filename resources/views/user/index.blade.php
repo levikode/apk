@@ -93,6 +93,7 @@
                         <th>No</th>
                         <th>Nama </th>
                         <th>Email</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,7 +103,23 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $dt->name }}</td>
                         <td>{{ $dt->email }}</td>
+                        <td>
+                        <div class="btn-group">
+                                <a type="button" class="btn btn-warning" href="{{ route('user.edit',$dt->id) }}">
+                                    <i class=" fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('user.destroy',$dt->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class=" fas fa-trash"></i>
+                                    </button>
+
+                                </form>
+                            </div>
+                        </td>
                     </tr>
+                   
 
                     @endforeach
                 </tbody>
